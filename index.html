@@ -6,52 +6,67 @@
     <title>Matemática Financeira - Tópicos e Exemplos</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #0d0d0d;
+            color: #fff;
         }
+
         header {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #0ff;
+            color: #000;
             text-align: center;
             padding: 20px 0;
             font-size: 2.5em;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
         }
+
         .content {
             padding: 30px;
         }
+
         .topic {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
+
         .topic h2 {
-            background-color: #28a745;
-            color: white;
-            padding: 12px;
+            background-color: #111;
+            color: #0ff;
+            padding: 15px;
             cursor: pointer;
             border-radius: 8px;
-            transition: background-color 0.3s;
+            transition: 0.3s;
+            text-shadow: 0 0 8px #0ff;
+            box-shadow: 0 0 10px #0ff;
         }
+
         .topic h2:hover {
-            background-color: #218838;
+            background-color: #222;
+            box-shadow: 0 0 15px #0ff, 0 0 25px #0ff;
         }
+
         .details {
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-left: 5px solid #28a745;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-left: 5px solid #0ff;
             border-radius: 8px;
             display: none;
+            box-shadow: 0 0 10px #0ff;
         }
-        .details p {
+
+        .details p, .details ul {
             line-height: 1.6;
         }
+
         .details h3 {
-            color: #007bff;
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
         }
+
         .expand-btn {
-            background-color: #007bff;
-            color: white;
+            background-color: #ff00ff;
+            color: #fff;
             padding: 12px 20px;
             border: none;
             border-radius: 5px;
@@ -59,28 +74,51 @@
             font-size: 1.1em;
             margin-top: 15px;
             transition: background-color 0.3s;
+            box-shadow: 0 0 10px #ff00ff;
         }
+
         .expand-btn:hover {
-            background-color: #0056b3;
+            background-color: #cc00cc;
+            box-shadow: 0 0 15px #ff00ff;
         }
+
         .expand-btn:focus {
             outline: none;
         }
+
         .example {
-            background-color: #f1f1f1;
+            background-color: #222;
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
-            border-left: 5px solid #007bff;
+            border-left: 5px solid #ff00ff;
+            box-shadow: 0 0 10px #ff00ff;
         }
+
         .example p {
             font-weight: bold;
         }
+
         .example .formula {
-            color: #d9534f;
+            color: #00ff00;
             font-size: 1.2em;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
         }
     </style>
+    <script>
+        function toggleDetails(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === "none" ? "block" : "none";
+        }
+    </script>
 </head>
 <body>
 
@@ -94,23 +132,19 @@
             <h2 onclick="toggleDetails('jurosSimples')">1. Juros Simples</h2>
             <div id="jurosSimples" class="details">
                 <p><strong>Fórmula de Juros Simples:</strong> J = P × i × t</p>
-                <p><strong>Onde:</strong></p>
                 <ul>
                     <li><strong>J</strong> = Juros acumulados</li>
-                    <li><strong>P</strong> = Capital inicial (principal)</li>
+                    <li><strong>P</strong> = Capital inicial</li>
                     <li><strong>i</strong> = Taxa de juros</li>
-                    <li><strong>t</strong> = Tempo de aplicação (em anos)</li>
+                    <li><strong>t</strong> = Tempo em anos</li>
                 </ul>
-                <p><strong>Aplicações:</strong> Financiamentos de curto prazo, empréstimos pessoais, investimentos de baixo risco.</p>
-                
                 <div class="example">
-                    <h3>Exemplo Complexo:</h3>
-                    <p>Se você investir R$ 1.000,00 a uma taxa de juros de 5% ao ano durante 3 anos, qual será o valor dos juros acumulados?</p>
-                    <p><span class="formula">J = 1000 × 0,05 × 3 = R$ 150,00</span></p>
-                    <p><strong>Resultado:</strong> O valor dos juros acumulados será R$ 150,00.</p>
+                    <h3>Exemplo:</h3>
+                    <p>Investimento de R$ 1.000,00 a 5% ao ano por 3 anos.</p>
+                    <p class="formula">J = 1000 × 0,05 × 3 = R$ 150,00</p>
+                    <p>Resultado: R$ 150,00 de juros.</p>
                 </div>
-
-                <button class="expand-btn" onclick="alert('Juros Simples: J = P × i × t')">Exemplo de Cálculo</button>
+                <button class="expand-btn" onclick="alert('J = P × i × t')">Exemplo de Cálculo</button>
             </div>
         </div>
 
@@ -118,24 +152,20 @@
         <div class="topic">
             <h2 onclick="toggleDetails('jurosCompostos')">2. Juros Compostos</h2>
             <div id="jurosCompostos" class="details">
-                <p><strong>Fórmula de Juros Compostos:</strong> M = P × (1 + i)^t</p>
-                <p><strong>Onde:</strong></p>
+                <p><strong>Fórmula:</strong> M = P × (1 + i)^t</p>
                 <ul>
-                    <li><strong>M</strong> = Montante final (capital + juros)</li>
-                    <li><strong>P</strong> = Capital inicial (principal)</li>
+                    <li><strong>M</strong> = Montante final</li>
+                    <li><strong>P</strong> = Capital inicial</li>
                     <li><strong>i</strong> = Taxa de juros</li>
-                    <li><strong>t</strong> = Tempo de aplicação (em anos)</li>
+                    <li><strong>t</strong> = Tempo</li>
                 </ul>
-                <p><strong>Aplicações:</strong> Investimentos de longo prazo, financiamentos, poupança.</p>
-                
                 <div class="example">
-                    <h3>Exemplo Complexo:</h3>
-                    <p>Se você investir R$ 2.000,00 a uma taxa de juros compostos de 6% ao ano durante 4 anos, qual será o montante final?</p>
-                    <p><span class="formula">M = 2000 × (1 + 0,06)^4 = 2000 × 1,262476 = R$ 2.524,95</span></p>
-                    <p><strong>Resultado:</strong> O montante final será R$ 2.524,95, ou seja, você ganhou R$ 524,95 de juros.</p>
+                    <h3>Exemplo:</h3>
+                    <p>R$ 2.000,00 a 6% ao ano por 4 anos.</p>
+                    <p class="formula">M = 2000 × (1 + 0,06)^4 = R$ 2.524,95</p>
+                    <p>Resultado: R$ 524,95 de juros.</p>
                 </div>
-
-                <button class="expand-btn" onclick="alert('Juros Compostos: M = P × (1 + i)^t')">Exemplo de Cálculo</button>
+                <button class="expand-btn" onclick="alert('M = P × (1 + i)^t')">Exemplo de Cálculo</button>
             </div>
         </div>
 
@@ -143,24 +173,20 @@
         <div class="topic">
             <h2 onclick="toggleDetails('descontoSimples')">3. Desconto Simples</h2>
             <div id="descontoSimples" class="details">
-                <p><strong>Fórmula de Desconto Simples:</strong> D = P × i × t</p>
-                <p><strong>Onde:</strong></p>
+                <p><strong>Fórmula:</strong> D = P × i × t</p>
                 <ul>
                     <li><strong>D</strong> = Desconto</li>
-                    <li><strong>P</strong> = Valor nominal do título</li>
+                    <li><strong>P</strong> = Valor nominal</li>
                     <li><strong>i</strong> = Taxa de desconto</li>
-                    <li><strong>t</strong> = Tempo (em anos)</li>
+                    <li><strong>t</strong> = Tempo</li>
                 </ul>
-                <p><strong>Aplicações:</strong> Desconto concedido em notas promissórias ou cheques, antecipação de recebíveis.</p>
-                
                 <div class="example">
-                    <h3>Exemplo Complexo:</h3>
-                    <p>Se o valor nominal de um título for R$ 1.000,00, com taxa de desconto de 8% ao ano, para um prazo de 6 meses, qual o valor do desconto?</p>
-                    <p><span class="formula">D = 1000 × 0,08 × 0,5 = R$ 40,00</span></p>
-                    <p><strong>Resultado:</strong> O valor do desconto será R$ 40,00.</p>
+                    <h3>Exemplo:</h3>
+                    <p>R$ 1.000,00 com 8% ao ano por 6 meses.</p>
+                    <p class="formula">D = 1000 × 0,08 × 0,5 = R$ 40,00</p>
+                    <p>Resultado: R$ 40,00 de desconto.</p>
                 </div>
-
-                <button class="expand-btn" onclick="alert('Desconto Simples: D = P × i × t')">Exemplo de Cálculo</button>
+                <button class="expand-btn" onclick="alert('D = P × i × t')">Exemplo de Cálculo</button>
             </div>
         </div>
 
@@ -168,66 +194,59 @@
         <div class="topic">
             <h2 onclick="toggleDetails('descontoComposto')">4. Desconto Composto</h2>
             <div id="descontoComposto" class="details">
-                <p><strong>Fórmula de Desconto Composto:</strong> D = P × (1 - i)^t</p>
-                <p><strong>Onde:</strong></p>
+                <p><strong>Fórmula:</strong> D = P × (1 - i)^t</p>
                 <ul>
                     <li><strong>D</strong> = Desconto</li>
-                    <li><strong>P</strong> = Valor nominal do título</li>
+                    <li><strong>P</strong> = Valor nominal</li>
                     <li><strong>i</strong> = Taxa de desconto</li>
-                    <li><strong>t</strong> = Tempo (em anos)</li>
+                    <li><strong>t</strong> = Tempo</li>
                 </ul>
-                <p><strong>Aplicações:</strong> Títulos de crédito, antecipação de recebíveis de longo prazo.</p>
-                
                 <div class="example">
-                    <h3>Exemplo Complexo:</h3>
-                    <p>Se o valor nominal de um título for R$ 2.000,00, com taxa de desconto de 10% ao ano, para um prazo de 3 anos, qual será o valor do desconto?</p>
-                    <p><span class="formula">D = 2000 × (1 - 0,1)^3 = 2000 × 0,729 = R$ 1.458,00</span></p>
-                    <p><strong>Resultado:</strong> O valor do desconto será R$ 1.458,00.</p>
+                    <h3>Exemplo:</h3>
+                    <p>R$ 2.000,00 com 10% ao ano por 3 anos.</p>
+                    <p class="formula">D = 2000 × (1 - 0,1)^3 = R$ 1.458,00</p>
+                    <p>Resultado: R$ 1.458,00 de desconto.</p>
                 </div>
-
-                <button class="expand-btn" onclick="alert('Desconto Composto: D = P × (1 - i)^t')">Exemplo de Cálculo</button>
+                <button class="expand-btn" onclick="alert('D = P × (1 - i)^t')">Exemplo de Cálculo</button>
             </div>
         </div>
 
         <!-- Valor Presente e Valor Futuro -->
         <div class="topic">
-            <h2 onclick="toggleDetails('valorPresenteFuturo')">5. Valor Presente (VP) e Valor Futuro (VF)</h2>
+            <h2 onclick="toggleDetails('valorPresenteFuturo')">5. Valor Presente e Valor Futuro</h2>
             <div id="valorPresenteFuturo" class="details">
-                <p><strong>Fórmula de Valor Presente (VP):</strong> VP = FV / (1 + i)^t</p>
-                <p><strong>Fórmula de Valor Futuro (VF):</strong> VF = PV × (1 + i)^t</p>
-                <p><strong>Onde:</strong></p>
+                <p><strong>VP:</strong> VP = FV / (1 + i)^t</p>
+                <p><strong>VF:</strong> VF = PV × (1 + i)^t</p>
                 <ul>
-                    <li><strong>VP</strong> = Valor presente (hoje)</li>
-                    <li><strong>VF</strong> = Valor futuro (daqui a t anos)</li>
+                    <li><strong>VP</strong> = Valor presente</li>
+                    <li><strong>VF</strong> = Valor futuro</li>
                     <li><strong>PV</strong> = Capital inicial</li>
                     <li><strong>i</strong> = Taxa de juros</li>
-                    <li><strong>t</strong> = Tempo (em anos)</li>
+                    <li><strong>t</strong> = Tempo</li>
                 </ul>
-                <p><strong>Aplicações:</strong> Determinação de quanto será necessário investir hoje para atingir um objetivo futuro ou calcular quanto um investimento renderá no futuro.</p>
-                
                 <div class="example">
-                    <h3>Exemplo Complexo:</h3>
-                    <p>Se você deseja ter R$ 5.000,00 em 5 anos com uma taxa de juros compostos de 8% ao ano, qual valor você precisa investir hoje?</p>
-                    <p><span class="formula">VP = 5000 / (1 + 0,08)^5 = 5000 / 1,4693 = R$ 3.402,53</span></p>
-                    <p><strong>Resultado:</strong> Você precisa investir R$ 3.402,53 hoje para ter R$ 5.000,00 em 5 anos.</p>
+                    <h3>Exemplo:</h3>
+                    <p>Investir quanto hoje para ter R$ 5.000,00 em 3 anos com 5%?</p>
+                    <p class="formula">VP = 5000 / (1 + 0,05)^3 ≈ R$ 4.319,48</p>
                 </div>
-
-                <button class="expand-btn" onclick="alert('Valor Presente e Futuro: VP = FV / (1 + i)^t e VF = PV × (1 + i)^t')">Exemplo de Cálculo</button>
+                <button class="expand-btn" onclick="alert('VP = FV / (1 + i)^t | VF = PV × (1 + i)^t')">Exemplo de Cálculo</button>
             </div>
         </div>
-
     </div>
 
-    <script>
-        function toggleDetails(topicId) {
-            const details = document.getElementById(topicId);
-            if (details.style.display === "block") {
-                details.style.display = "none";
-            } else {
-                details.style.display = "block";
-            }
-        }
-    </script>
+      <!-- Seção de Redes Sociais -->
+  <section style="background-color:#111; color:#0ff; padding: 30px 20px; text-align: center; border-top: 2px solid #0ff; box-shadow: 0 0 10px #0ff inset;">
+    <h2>Minhas Redes Sociais</h2>
+    <p>Fique à vontade para me seguir:</p>
+    <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 1.2em;">
+      <a href="https://www.linkedin.com/in/junior-santos-9b930b211" target="_blank" style="color: #0ff; text-decoration: none;">LinkedIn</a> |
+      <a href="https://github.com/junior670" target="_blank" style="color: #0ff; text-decoration: none;">GitHub</a> |
+      <a href="https://www.instagram.com/junior670" target="_blank" style="color: #0ff; text-decoration: none;">Instagram</a> |
+      <a href="https://www.dio.me/users/diegojr09" target="_blank" style="color: #0ff; text-decoration: none;">Perfil Público.Dio</a> |
+      <a href="https://www.dio.me/" target="_blank" style="color: #0ff; text-decoration: none;">Dio.me</a> |
+      <a href="https://www.youtube.com/watch?v=jVxxKYlSDNk" target="_blank" style="color: #0ff; text-decoration: none;">YouTube</a> |
+    </div>
+  </section>
 
 </body>
 </html>
